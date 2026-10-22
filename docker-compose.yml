@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:17
+    container_name: angham.db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: angham
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: angham
+    ports:
+      - "127.0.0.1:5437:5432"
+    volumes:
+      - angham-db:/var/lib/postgresql/data
+
+volumes:
+  angham-db:

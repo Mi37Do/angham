@@ -1,0 +1,261 @@
+{
+  "site": {
+    "name": "Angham Al Andalous",
+    "tagline": "Sidi Bel Abbès — Andalusian musical heritage of the Tlemcen school",
+    "description": "A cultural and scientific association dedicated to promoting, preserving and passing on the Andalusian musical heritage of the Tlemcen school.",
+    "motto": "In the footsteps of the masters"
+  },
+  "nav": {
+    "home": "Home",
+    "patrimoine": "Musical heritage",
+    "bibliotheque": "Library & archives",
+    "recherche": "Research",
+    "evenements": "Events",
+    "publications": "Publications & news",
+    "association": "The association",
+    "contact": "Contact & participation"
+  },
+  "common": {
+    "comingSoon": "Content in preparation.",
+    "explore": "Explore",
+    "language": "Language",
+    "menu": "Menu",
+    "rights": "All rights reserved.",
+    "readMore": "Read more",
+    "back": "Back",
+    "empty": "Nothing here yet.",
+    "all": "All",
+    "loading": "Loading…",
+    "preferences": "Preferences",
+    "sections": "Sections",
+    "notFound": "This page does not exist.",
+    "notFoundHint": "The link may be old, or the page has moved. Every section of the site is still within reach.",
+    "goHome": "Back to home",
+    "close": "Close",
+    "related": "Related articles",
+    "photoCredits": "Photo credits",
+    "photo": "Photo"
+  },
+  "home": {
+    "heroTitle": "Preserving and passing on the Andalusian music of Tlemcen",
+    "heroText": "Angham Al Andalous brings together culture, documentation and research to keep a centuries-old musical heritage alive.",
+    "ctaPrimary": "Discover the heritage",
+    "ctaSecondary": "Browse the library",
+    "about": [
+      {
+        "title": "Mission",
+        "text": "Promote, preserve and pass on the Andalusian musical heritage of the Tlemcen school."
+      },
+      {
+        "title": "Vision",
+        "text": "Become a reference platform, cultural and scientific, for this heritage."
+      },
+      {
+        "title": "Goals",
+        "text": "Document sources, enliven cultural life and support research."
+      }
+    ],
+    "upcoming": "Upcoming events",
+    "latest": "Latest publications & news",
+    "resources": "Documentary resources",
+    "quickAccess": "Quick access",
+    "featured": "Featured reading",
+    "pillars": "What guides us",
+    "explore": "Explore the heritage",
+    "secretary": {
+      "title": "A word from the Secretary General",
+      "name": "Rachid SOULAIMAN",
+      "role": "Secretary General of Angham Al Andalous",
+      "paragraphs": [
+        "Angham Al Andalous was born of a simple conviction: the Andalusian music of the Tlemcen school is not a memory to be kept under glass, but a living language passed on from voice to voice. In Sidi Bel Abbès, we want to give this heritage a place where it is played, heard and learned.",
+        "Our ambition is twofold: to keep the nouba and hawzi alive through musical evenings, meetings and exchanges with the Algiers and Constantine schools; and to document sources, works and their variants rigorously, so that future generations inherit reliable knowledge.",
+        "We walk in the footsteps of the masters. Whether you are a musician, a researcher, a music lover or the keeper of family archives, this house is yours too: I invite you to join us."
+      ]
+    },
+    "heroImageAlt": "An Algerian ensemble at the Congress of Arab Music in Cairo, 1932"
+  },
+  "sections": {
+    "patrimoine": {
+      "title": "Musical heritage",
+      "intro": "The history, forms and figures of Andalusian music from the Tlemcen school.",
+      "items": [
+        "History of Andalusian music",
+        "The Tlemcen school and its particularities",
+        "Repertoires and musical forms",
+        "Traditional instruments",
+        "Masters, artists and historical figures",
+        "Transmission and preservation of the heritage"
+      ],
+      "texts": [
+        "From Ziryab in Córdoba to the Andalusian families welcomed in Tlemcen, the history of this music mixes established facts and handed-down stories. Our articles keep the two apart.",
+        "Tlemcen gave its name to one of Algeria’s three great schools, gharnati, with its own families of modes and its own repertoire.",
+        "The nouba, a great suite in five movements, and hawzi, poetry sung in dialectal Arabic, are the two pillars of the Tlemcen repertoire.",
+        "Rebab, kouitra, kamandja, tar and derbouka: a chamber ensemble in which every instrument ornaments the same melody.",
+        "From Cheikh Larbi Bensari to Abdelkrim Dali and Cheikha Tetma, the masters of the twentieth century carried this art far beyond Tlemcen.",
+        "Long handed down from master to pupil, this music reached radio, records and associations, from Tlemcen to Sidi Bel Abbès and beyond."
+      ]
+    },
+    "bibliotheque": {
+      "title": "Library & archives",
+      "intro": "Books, studies, manuscripts, recordings and digitised documents.",
+      "items": [
+        "Books and bibliographic references",
+        "Articles and scholarly studies",
+        "Manuscripts and historical documents",
+        "Audio and video archives",
+        "Photographs and digitised documents",
+        "Catalogue of musical works",
+        "Search and filter resources"
+      ]
+    },
+    "recherche": {
+      "title": "Research",
+      "intro": "The association’s scientific approach and the results of its work.",
+      "items": [
+        "Our scientific approach",
+        "Research areas and projects",
+        "Documenting and studying musical sources",
+        "Music transcription project",
+        "Comparative studies and variants of works",
+        "Research and documentation methodology",
+        "Scientific publications and results"
+      ],
+      "texts": [
+        "Our approach combines musical practice with the study of sources: every piece of information we publish is tied to its references, and debated points are presented as such.",
+        "Three lines guide our work: documenting musical sources, transcribing the works and comparing their versions.",
+        "We catalogue books, articles, manuscripts and recordings, and make them available in the site’s library, together with their terms of use.",
+        "In time we hope to offer musical transcriptions of the works, published only once checked and validated.",
+        "The same piece travels between Tlemcen, Algiers and Constantine in different forms: comparing these variants, titles and poems included, sheds light on their history.",
+        "Each work will have a record bringing together title variants, bibliographic sources, documented performances and authorised recordings, through a process of contribution and scientific validation.",
+        "The results of our work are published in Publications & news, starting with our in-depth articles on the Tlemcen school."
+      ]
+    },
+    "evenements": {
+      "title": "Events",
+      "intro": "Lectures, musical evenings, festivities and cultural exchanges.",
+      "items": [
+        "Upcoming events calendar",
+        "Lectures and scientific meetings",
+        "Musical evenings",
+        "Religious celebrations and cultural festivities",
+        "Exchanges with the Algiers and Constantine schools",
+        "Past events archive",
+        "Photo galleries and recordings"
+      ]
+    },
+    "publications": {
+      "title": "Publications & news",
+      "intro": "Articles, interviews, reports and announcements.",
+      "items": [
+        "In-depth articles on Andalusian music",
+        "Association news",
+        "Interviews with musicians, researchers and specialists",
+        "Conference reports",
+        "Official announcements",
+        "Cultural and scientific contributions"
+      ]
+    },
+    "association": {
+      "title": "The association",
+      "intro": "Who we are, what drives us and how we work.",
+      "items": [
+        "About and history",
+        "Mission, vision and values",
+        "Cultural and scientific goals",
+        "Organisation and members",
+        "Cultural and scientific partners",
+        "Activity reports and completed projects"
+      ],
+      "texts": [
+        "Angham Al Andalous is a cultural and scientific association from Sidi Bel Abbès, faithful to the Tlemcen school. Its motto, “In the footsteps of the masters”, expresses its commitment to transmission.",
+        "Our mission: to promote, preserve and pass on the Andalusian musical heritage of the Tlemcen school. Our vision: to become a reference platform, cultural and scientific, for this heritage.",
+        "To enliven cultural life with musical evenings, lectures and exchanges with the Algiers and Constantine schools; to document sources and support research.",
+        null,
+        null,
+        null
+      ]
+    },
+    "contact": {
+      "title": "Contact & participation",
+      "intro": "Write to us, contribute, collaborate or support the association.",
+      "items": [
+        "Contact details",
+        "Contact form",
+        "Social media",
+        "Submit documents, archives or testimonies",
+        "Collaboration and scientific partnership",
+        "Join or support the association"
+      ]
+    }
+  },
+  "events": {
+    "upcoming": "Upcoming",
+    "past": "Past events",
+    "location": "Venue",
+    "categories": {
+      "conference": "Lecture",
+      "soiree": "Musical evening",
+      "celebration": "Celebration",
+      "echange": "Cultural exchange",
+      "autre": "Other"
+    }
+  },
+  "publications": {
+    "by": "By",
+    "categories": {
+      "article": "Feature",
+      "actualite": "News",
+      "entretien": "Interview",
+      "compte-rendu": "Report",
+      "communique": "Announcement",
+      "contribution": "Contribution"
+    }
+  },
+  "library": {
+    "search": "Search the library",
+    "filter": "Resource type",
+    "open": "Open",
+    "rights": "Rights",
+    "types": {
+      "livre": "Books",
+      "article": "Articles & studies",
+      "manuscrit": "Manuscripts",
+      "audio": "Audio",
+      "video": "Video",
+      "photo": "Photographs",
+      "partition": "Scores"
+    }
+  },
+  "contact": {
+    "formTitle": "Write to us",
+    "name": "Full name",
+    "email": "Email address",
+    "subject": "Subject",
+    "message": "Message",
+    "submit": "Send",
+    "sending": "Sending…",
+    "success": "Thank you! Your message has been sent. We will get back to you soon.",
+    "subjects": {
+      "general": "General question",
+      "contribution": "Submit documents, archives or testimonies",
+      "partenariat": "Collaboration or scientific partnership",
+      "adhesion": "Join or support the association"
+    },
+    "errors": {
+      "required": "This field is required.",
+      "email": "Invalid email address.",
+      "tooLong": "Text is too long.",
+      "generic": "Something went wrong. Please try again."
+    },
+    "preview": "The contact form will be active when the site officially launches. This version is a preview."
+  },
+  "navShort": {
+    "patrimoine": "Heritage",
+    "bibliotheque": "Library",
+    "recherche": "Research",
+    "evenements": "Events",
+    "publications": "Publications",
+    "association": "About us",
+    "contact": "Contact"
+  }
+}

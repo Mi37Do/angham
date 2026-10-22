@@ -1,0 +1,675 @@
+@import 'tailwindcss';
+@import '../brand.css';
+
+/*
+ * Administration design system: foundoq.dev's taouzie-ui (src/styles/taouzie-ui),
+ * ported as is — the same tokens, component classes and their reasons — with
+ * the Angham green in place of foundoq's blue. Light appearance only.
+ */
+
+/* Semantic tokens (taouzie-ui base.css) */
+:root {
+  --main-background: #f2f5f1;
+  --secondary-background: #ffffff;
+  --text-primary: #1d2125;
+  --text-color: #22331f;
+  --border: #e0e7dd;
+
+  --primary-1: var(--green-500);
+  --primary-2: var(--green-800);
+  --vt-c-primary-3: var(--primary-1);
+
+  --primary-90: color-mix(in srgb, var(--primary-1), transparent 90%);
+
+  --primary-red-1: #ef4444;
+  --primary-red-2: #dc2626;
+  /* Danger as text: darkened 25% to clear 4.5:1 on white (see taouzie-ui). */
+  --danger-strong: color-mix(in srgb, var(--primary-red-1) 75%, #000);
+  --warning-color: #f59e0b;
+  --success-color: #10b981;
+  --info-color: #2563eb;
+  --neutral-color: #475569;
+
+  --btn-float: var(--text-color);
+  --btn-float-hover: #64748b;
+  --btn-ghost-hover: var(--border);
+  --btn-disabled: var(--border);
+  --row-hover: color-mix(in srgb, var(--main-background), black 3%);
+  --color-lighter-text: #5e6b5b;
+}
+
+@theme inline {
+  --font-sans: var(--font-open-sans), var(--font-cairo), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-stolzl), var(--font-cairo), ui-sans-serif, system-ui, sans-serif;
+
+  --color-app: var(--main-background);
+  --color-surface: var(--secondary-background);
+  --color-content: var(--text-color);
+  --color-muted: var(--color-lighter-text);
+  --color-edge: var(--border);
+
+  --color-brand: var(--primary-1);
+  --color-gold: var(--gold);
+  --color-gold-strong: var(--gold-strong);
+  --color-brand-2: var(--primary-2);
+  --color-brand-3: var(--vt-c-primary-3);
+
+  --color-danger: var(--primary-red-1);
+  --color-danger-2: var(--primary-red-2);
+
+  /* Danger as *text*. `--primary-red-1` is #ef4444, which measures 3.76:1 on
+     white and 3.38:1 on a tinted band — below the 4.5:1 body-text floor, so
+     red-on-light was never readable enough to carry a sentence, only a shape.
+     Darkened 25% it clears 6.11:1 on white and 5.49:1 on the standing band,
+     with the hue intact. `--color-danger` stays exactly as it is for icons,
+     borders and fills, where 3:1 is the applicable bar. */
+  --color-danger-strong: var(--danger-strong);
+
+  /* `--warning-color` existed in base.css from the start but was never mapped
+     into the theme, so `text-warning` / `bg-warning` compiled to nothing —
+     silently. `cart/index.vue` and `clients/addEdit.vue` have been asking for
+     it and rendering unstyled text; this is what turns those on. */
+  --color-warning: var(--warning-color);
+
+  --color-btn: var(--btn-float);
+  --color-btn-hover: var(--btn-float-hover);
+  --color-btn-disabled: var(--btn-disabled);
+  --color-btn-ghost: var(--btn-ghost-hover);
+  --color-row-hover: var(--row-hover);
+}
+
+
+/* v4 declares animations as theme vars; `animate-pop` previously lived in the
+   v3 tailwind.config.js. */
+@theme {
+  --animate-pop: pop 0.2s ease-out;
+  --animate-shake: shake 1s infinite;
+  --animate-l38: l38 0.5s infinite;
+  --animate-shimmer: shimmer 1.6s ease-in-out infinite;
+
+  @keyframes pop {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.96);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes shake {
+    0%,
+    100% {
+      transform: rotate(0);
+    }
+    25% {
+      transform: rotate(3deg);
+    }
+    50% {
+      transform: rotate(-3deg);
+    }
+    75% {
+      transform: rotate(3deg);
+    }
+  }
+
+  @keyframes l38 {
+    100% {
+      background-position:
+        100% 0,
+        100% 100%,
+        0 100%,
+        0 0;
+    }
+  }
+
+  /* Sweeps a highlight across a 200%-wide gradient. Starting past the far edge
+     and ending past the near one leaves a beat between passes, so the sweep
+     reads as a pulse rather than a loop with no seam. */
+  @keyframes shimmer {
+    from {
+      background-position: 200% 0;
+    }
+    to {
+      background-position: -200% 0;
+    }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-app text-content;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  :lang(ar) {
+    font-family: var(--font-cairo), var(--font-open-sans), ui-sans-serif, system-ui, sans-serif;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+@utility hidden-scrollbar {
+  overflow: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/*
+   The scrollbar `CommonScrollable` falls back to when `hidden-scrollbar` is not
+   passed.
+
+   It was referenced there from the start and never written, so "leave the prop
+   off" quietly meant "use the browser's own" — a chunky native bar against a
+   card, on the four screens that took the default. A class that does not exist
+   still applies cleanly, which is why it went unnoticed.
+
+   Built on the palette rather than a fixed grey so it holds up in both themes,
+   and sized narrow: this sits inside cards and dialogs, where a 12px bar is
+   furniture. `transparent` track for the same reason — the thumb is the only
+   part that carries information.
+*/
+@utility styled-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--color-lighter-text) 40%, transparent)
+    transparent;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: color-mix(in srgb, var(--color-lighter-text) 40%, transparent);
+    border-radius: 999px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: color-mix(in srgb, var(--color-lighter-text) 65%, transparent);
+  }
+
+  /* Both axes meet here; without it the corner draws as a bare grey square. */
+  &::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+}
+
+/* Makes the scrollbar overlay the content */
+@utility scrollbar-overlay {
+  scrollbar-gutter: stable;
+
+  &::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(156, 163, 175, 0.5);
+    border-radius: 6px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+  }
+}
+
+@utility text-tag {
+  @apply text-[0.65rem] font-medium uppercase;
+}
+
+
+@layer components {
+  .btn {
+    /* A permanent, invisible border. Variants like `.btn-nofloat` only ever
+       change *its color* (transparent -> `border-edge`) rather than adding a
+       border where none existed — the latter jumps the border-width itself
+       from 0 to 1px, which can't transition and pops in instead of fading. */
+    @apply flex h-10 cursor-pointer items-center gap-2.5 rounded-xl border border-transparent fill-btn px-2.5 text-[0.7rem] leading-normal font-medium text-btn uppercase transition-all duration-200 active:animate-pop;
+  }
+
+  .btn-square {
+    @apply w-10;
+  }
+
+  .btn-float {
+    @apply border border-edge bg-surface fill-btn text-btn shadow-2xl shadow-brand;
+  }
+
+  .btn-nofloat {
+    @apply border border-edge bg-surface fill-btn text-btn;
+  }
+
+  .btn-nofloat-red {
+    @apply border border-edge bg-surface fill-danger text-danger;
+  }
+
+  /* A choice among options that set a value - yes/no, not available / read /
+     full, deposit / credit. Lifted from the flight filters' "Checked baggage"
+     buttons: the picked one is tinted and outlined in the brand, the others
+     stay plain, so the current value reads at a glance without the heavy
+     solid fill of `.btn-primary` (which is for actions). Pair with `.btn`. */
+  .btn-choice {
+    @apply border border-edge bg-surface fill-btn text-btn;
+  }
+
+  .btn-choice:not(.btn-choice-active):not(:disabled):hover {
+    @apply border-[var(--primary-1)]/40;
+  }
+
+  .btn-choice-active {
+    @apply border-[var(--primary-1)] bg-[var(--primary-90)] fill-brand-2 text-brand-2;
+  }
+
+  .btn-choice:disabled {
+    @apply cursor-not-allowed opacity-60;
+  }
+
+  .btn-float:hover,
+  .btn-nofloat:hover {
+    @apply border border-btn/40 transition-colors duration-200 bg-surface;
+  }
+
+  .btn-nofloat:disabled,
+  .btn-float:disabled {
+    @apply cursor-not-allowed bg-linear-to-br from-btn-disabled to-btn-disabled text-btn-hover;
+  }
+
+  .btn-float:disabled:hover {
+    @apply cursor-not-allowed bg-btn-disabled;
+  }
+
+  .btn-sm {
+    @apply flex h-8 cursor-pointer items-center rounded-lg fill-btn px-2 text-[0.7rem] leading-normal font-medium text-btn transition-all active:animate-pop;
+  }
+
+  .btn-xs {
+    @apply flex h-6 cursor-pointer items-center rounded-md fill-btn px-1 text-[0.7rem] leading-normal font-medium text-btn transition-all active:animate-pop;
+  }
+
+  .btn-xs.btn-square {
+    @apply w-6;
+  }
+
+  .btn-sm:hover {
+    @apply bg-btn-ghost;
+  }
+
+  .btn-sm.btn-square {
+    @apply w-8;
+  }
+
+  /* ==========================================================================
+     Data surfaces
+     --------------------------------------------------------------------------
+     A dashboard is read, not browsed. These exist because the utilities alone
+     kept producing screens where the space between two unrelated sections was
+     the same as the space between a label and the number under it, and where a
+     column of money did not line up. Both are felt immediately and neither is
+     fixable one component at a time.
+     ========================================================================== */
+
+  /* Figures line up in a column.
+     Proportional digits give every number a different width, so a stack of
+     currency reads as a ragged edge and the eye cannot compare magnitudes
+     without landing on each one. `tabular-nums` fixes the advance width;
+     `slashed-zero` keeps 0 and O apart in references like `D-CMD2026-00009`. */
+  .tabular {
+    font-variant-numeric: tabular-nums slashed-zero;
+  }
+
+  /* The figure on a tile. Deliberately NOT `.pixa-title*`: those are semibold
+     uppercase, which is right for a heading and wrong for a number — uppercase
+     does nothing to digits but the tracking it carries pulls them apart. */
+  .metric {
+    @apply text-2xl leading-none font-semibold;
+    font-variant-numeric: tabular-nums slashed-zero;
+    letter-spacing: -0.02em;
+  }
+
+  .metric-sm {
+    @apply text-lg leading-none font-semibold;
+    font-variant-numeric: tabular-nums slashed-zero;
+    letter-spacing: -0.015em;
+  }
+
+  /* A group heading with a rule that runs to the end of the row. The rule is
+     what separates sections now that they are no longer all `gap-3` apart —
+     it costs one line of vertical space where a blank band would cost six. */
+  .section-head {
+    @apply flex items-center gap-3 text-[0.7rem] font-semibold tracking-[0.08em] text-gold-strong uppercase;
+  }
+
+  .section-head::after {
+    content: '';
+    @apply h-px flex-1 bg-edge;
+  }
+
+  /* Rows separated by one hairline each, from `divide-y` on the list — never a
+     `border-b` per row, which double-draws at every boundary and leaves a
+     stray rule under the last item. */
+  .row {
+    @apply flex items-center justify-between gap-3 rounded-md px-2 py-1.5 transition-colors;
+  }
+
+  .row:hover {
+    @apply bg-row-hover;
+  }
+
+  /* Focus that is visible on both themes and outside the element, so it is not
+     clipped by the parent's `overflow-hidden`. */
+  .focus-ring:focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand;
+  }
+
+  /* A tile that is a link owes the pointer an answer. Lift on hover, press on
+     click — both transform-only, so they composite instead of relayout. */
+  .interactive {
+    @apply transition-[transform,box-shadow,border-color] duration-150 ease-out;
+  }
+
+  .interactive:hover {
+    @apply -translate-y-px shadow-sm;
+  }
+
+  .interactive:active {
+    @apply translate-y-0 scale-[0.995];
+  }
+
+  /* Everything above animates. Under reduced motion it all stops moving and
+     keeps its colour changes, which carry the same information without the
+     travel. */
+  @media (prefers-reduced-motion: reduce) {
+    .interactive,
+    .interactive:hover,
+    .interactive:active {
+      @apply translate-y-0 scale-100 transition-none;
+    }
+  }
+
+  .card {
+    @apply rounded-xl border border-edge bg-surface;
+  }
+
+  .card.card-shadow {
+    @apply shadow-2xl shadow-brand/20;
+  }
+
+  .btn-primary {
+    @apply relative isolate bg-linear-to-br from-brand to-brand-2 fill-surface text-surface transition-all duration-200 ease-in-out;
+  }
+
+  /* Cursor-tracking light. `--x`/`--y` are written by initSpotlightCursor()
+     (src/utils/spotlightCursor.ts) as the pointer moves over the button; it
+     defaults to centered so the glow still looks intentional on keyboard
+     focus, where no pointer position is ever set. `isolate` on `.btn-primary`
+     keeps this `-z-10` layer contained to the button instead of sinking
+     behind page content. `border-radius: inherit` rounds the glow to match
+     the button's own corners. */
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -10;
+    border-radius: inherit;
+    background: radial-gradient(
+      circle 120px at var(--x, 50%) var(--y, 50%),
+      color-mix(in srgb, var(--primary-1) 30%, transparent),
+      transparent 100%
+    );
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .btn-primary:hover::before,
+  .btn-primary:focus-visible::before {
+    opacity: 1;
+  }
+
+  /* The quiet primary: the brand green washed down to a background, with the
+     text and icons on it left at full strength. For an action that is the
+     obvious one in its context and does not need to announce itself — the chat
+     composer's send button sits beside the message you just typed, so a solid
+     gradient there is the loudest thing in a thread of your own words.
+
+     The 12% mix is the same one the sent message bubble and the avatar circle
+     use (`useAvatarTint.ts`), so the button reads as part of that column
+     rather than a control dropped into it. */
+  .btn-light-primary {
+    @apply fill-brand text-brand transition-all duration-200 ease-in-out;
+    background-color: color-mix(in srgb, var(--primary-1) 12%, var(--color-surface));
+  }
+
+  /* Deepens on hover rather than changing hue: the wash is the resting state,
+     so the feedback is more of the same colour. */
+  .btn-light-primary:hover:not(:disabled),
+  .btn-light-primary:focus-visible:not(:disabled) {
+    background-color: color-mix(in srgb, var(--primary-1) 22%, var(--color-surface));
+  }
+
+  .btn-light-primary:disabled {
+    @apply cursor-not-allowed bg-btn-disabled fill-surface text-surface;
+  }
+
+  .card-primary {
+    @apply rounded-xl bg-linear-to-br from-brand to-brand-2 fill-surface text-surface transition-all duration-200 ease-in-out;
+  }
+
+  .btn-primary-red {
+    @apply bg-linear-to-br from-danger to-danger-2 fill-surface text-white transition-colors duration-200 ease-in-out;
+  }
+
+  .btn-primary:hover {
+    /* `.btn-primary` already carries `transition-all`; re-declaring it here as
+       `transition-colors` would exclude `background-size`, so the gradient
+       sweep below would jump instantly instead of animating. */
+    /*   background-size: 200% 200%; Expand the gradient */
+  }
+
+  .btn-primary:disabled {
+    @apply cursor-not-allowed bg-linear-to-br from-btn-disabled to-btn-disabled text-surface;
+  }
+
+  .input {
+    @apply flex h-10 w-full items-center rounded-xl border border-edge bg-surface px-2.5 text-sm outline-hidden;
+  }
+
+  .input-search {
+    @apply flex h-10 w-full items-center rounded-xl border border-edge bg-surface text-sm outline-hidden;
+  }
+
+  .textarea {
+    @apply flex min-h-20 w-full items-center rounded-xl border border-edge bg-surface px-2.5 py-2 text-sm outline-hidden;
+  }
+
+  /* `:focus-within` rather than `:focus`: `.input` sometimes sits on a
+     wrapper (e.g. an icon + <input> pair) whose child is what actually
+     receives focus, not the wrapper itself — `:focus` would never match
+     there. `:focus-within` covers that case and the plain `class="input"`
+     on the field directly, since a focused element is trivially "within"
+     itself too. */
+  .input:focus-within,
+  .input-search:focus-within,
+  .textarea:focus-within {
+    @apply border-brand ring ring-brand/30 shadow-2xl shadow-brand/20;
+  }
+
+  .pixa-title,
+  .pixa-title-modal {
+    @apply text-lg font-semibold uppercase;
+  }
+
+  .pixa-title-primary {
+    @apply text-lg font-semibold text-brand-3 uppercase;
+  }
+
+  .pixa-title-2 {
+    @apply font-semibold uppercase;
+  }
+
+  /* Fluid title scale — xxs → 5xl.
+     Each level keeps the shared heading traits (semibold, uppercase, tight
+     leading) and sizes itself with clamp(min, calc(rem + vw), max): the middle
+     term grows with the viewport, the two bounds stop it shrinking to nothing
+     on a phone or ballooning on a wide desktop. The `vw` slope of each step is
+     tuned so the size sweeps from its floor at ~360px to its ceiling at
+     ~1280px, then holds. `.pixa-title-lg` matches the base `.pixa-title`
+     (1.125rem) at its floor, so the scale reads as an extension of it. */
+  .pixa-title-xxs,
+  .pixa-title-xs,
+  .pixa-title-sm,
+  .pixa-title-md,
+  .pixa-title-lg,
+  .pixa-title-xl,
+  .pixa-title-2xl,
+  .pixa-title-3xl,
+  .pixa-title-4xl,
+  .pixa-title-5xl {
+    @apply font-semibold uppercase;
+    line-height: 1.15;
+  }
+
+  .pixa-title-xxs {
+    font-size: clamp(0.625rem, calc(0.6rem + 0.11vw), 0.6875rem);
+  }
+
+  .pixa-title-xs {
+    font-size: clamp(0.75rem, calc(0.725rem + 0.11vw), 0.8125rem);
+  }
+
+  .pixa-title-sm {
+    font-size: clamp(0.875rem, calc(0.85rem + 0.11vw), 0.9375rem);
+  }
+
+  .pixa-title-md {
+    font-size: clamp(1rem, calc(0.95rem + 0.22vw), 1.125rem);
+  }
+
+  .pixa-title-lg {
+    font-size: clamp(1.125rem, calc(1.03rem + 0.43vw), 1.375rem);
+  }
+
+  .pixa-title-xl {
+    font-size: clamp(1.25rem, calc(1.1rem + 0.65vw), 1.625rem);
+  }
+
+  .pixa-title-2xl {
+    font-size: clamp(1.5rem, calc(1.3rem + 0.87vw), 2rem);
+  }
+
+  .pixa-title-3xl {
+    font-size: clamp(1.875rem, calc(1.63rem + 1.09vw), 2.5rem);
+  }
+
+  .pixa-title-4xl {
+    font-size: clamp(2.25rem, calc(1.86rem + 1.74vw), 3.25rem);
+  }
+
+  .pixa-title-5xl {
+    font-size: clamp(3rem, calc(2.41rem + 2.61vw), 4.5rem);
+  }
+
+  .tag {
+    @apply rounded-lg px-1.5 pt-1 pb-0.5;
+  }
+
+  .form-control {
+    @apply flex w-full flex-col gap-1.5;
+  }
+
+  .label {
+    @apply text-[0.7rem] text-muted uppercase;
+  }
+
+  /* ---------------------------------------------------------------------------
+     Required-field marker.
+
+     Driven off the control's own `required` attribute rather than a class the
+     author remembers to add, so the asterisk cannot disagree with the form: make
+     a field optional and the marker goes with it, in the same edit. Scoped to
+     `.form-control > .label`, so section headings, legends and table labels —
+     which share the `.label` class — are left alone.
+
+     `.is-required` is the escape hatch for the controls `:has()` cannot see: a
+     CommonListBox is a button and a popover, not an `<input>`, so a mandatory
+     picker has to say so by hand.
+     --------------------------------------------------------------------------- */
+  .form-control:has(> :is(input, select, textarea)[required]) > .label::after,
+  .label.is-required::after {
+    content: '*';
+    /* Not a space — a gap that cannot wrap the asterisk onto its own line. */
+    margin-inline-start: 0.2em;
+    color: var(--primary-red-1);
+    font-weight: 600;
+  }
+
+  .table-option-button {
+    @apply flex h-[1.925rem] w-[1.925rem] cursor-pointer items-center rounded-md fill-btn px-1.5 text-[0.7rem] leading-normal font-medium text-btn transition-all active:animate-pop;
+  }
+
+  .table-option-button:hover {
+    @apply bg-btn-ghost;
+  }
+
+  /* Placeholder for content that hasn't arrived yet: give it a size and it
+     shimmers in the shape of whatever it stands in for —
+     `<span class="skeleton h-3 w-24" />`. Preferred over a spinner, which says
+     only "wait"; a skeleton also says what is coming and how much of it.
+
+     Tinted from the text colour rather than a fixed grey so it tracks the
+     tokens above, the same way `bg-glass-effect` does. */
+  .skeleton {
+    --_base: color-mix(in srgb, var(--text-color) 8%, transparent);
+    --_sheen: color-mix(in srgb, var(--text-color) 16%, transparent);
+    border-radius: 0.375rem;
+    background-color: var(--_base);
+    background-image: linear-gradient(90deg, var(--_base) 25%, var(--_sheen) 50%, var(--_base) 75%);
+    background-size: 200% 100%;
+    animation: var(--animate-shimmer);
+  }
+
+  /* The sweep is a background-position animation, so it always travels
+     left-to-right; reversing it sends it with the text in Arabic. */
+  [dir='rtl'] .skeleton {
+    animation-direction: reverse;
+  }
+
+  /* Left as a flat block rather than removing the animation only — a static
+     gradient would read as a lighting artefact instead of a placeholder. */
+  @media (prefers-reduced-motion: reduce) {
+    .skeleton {
+      background-image: none;
+      animation: none;
+    }
+  }
+
+
+  /* HTML: <div class="loader"></div> */
+  .loader {
+    width: 35px;
+    aspect-ratio: 1;
+    --_g: no-repeat radial-gradient(farthest-side, #000 94%, #0000);
+    background:
+      var(--_g) 0 0,
+      var(--_g) 100% 0,
+      var(--_g) 100% 100%,
+      var(--_g) 0 100%;
+    background-size: 40% 40%;
+    animation: var(--animate-l38);
+  }
+
+}

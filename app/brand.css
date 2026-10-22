@@ -1,0 +1,36 @@
+/*
+ * Angham Al Andalous palette, shared by the public site (globals.css) and the
+ * administration (admin/admin.css). Derived from the SVGs in assets/: the
+ * calligraphy green #1d3b1b, white, and the mosaic grey #7c7c7c.
+ *
+ * The site has a light appearance only.
+ */
+
+/* Light only: form controls and scrollbars stay light whatever the device says. */
+:root {
+  color-scheme: light;
+}
+
+:root {
+  /* The logo green (#1d3b1b = 800) and its scale */
+  --green-50: #eef4ed;
+  --green-100: #dbe8d9;
+  --green-200: #b7d1b3;
+  --green-300: #8bb486;
+  --green-400: #5f945a;
+  --green-500: #3f773a;
+  --green-600: #2f5f2b;
+  --green-700: #254c22;
+  --green-800: #1d3b1b;
+  --green-900: #142a13;
+  /* Secondary: a touch of gold (#9C732A). On white it measures ~4.3:1, under
+     the 4.5:1 floor for small text, so small gold text uses --gold-strong
+     (~6:1); #9C732A itself is for fills, rules and large text. */
+  --gold: #9c732a;
+  --gold-strong: #7d5c22;
+  --gold-soft: #f4ecdd;
+  /* The mosaic grey, and the ivory the white logo sits on */
+  --mosaic: #7c7c7c;
+  --ivory: #f4f1e8;
+  --on-ivory: #1d3b1b;
+}

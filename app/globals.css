@@ -1,0 +1,552 @@
+@import 'tailwindcss';
+@import 'flag-icons/css/flag-icons.min.css';
+@import './brand.css';
+
+/*
+ * Public site design system. Bones from foundoq.web (tokens, controls, motion);
+ * dress from al-Andalus: a sage ground drawn from the logo green, the green for the one action
+ * and the closing field, gold for ornament. Pictures are plain, solid
+ * rectangles; sections are joined by an eight-pointed-star rule and
+ * a band of the charter's zellige. Everything lives in a centred column no
+ * wider than 1280px (.shell). Type follows a 1.333 scale; reading text is
+ * 18px at 1.75 over at most 68ch. Stolzl / Open Sans, Cairo in Arabic.
+ */
+:root {
+  --primary: var(--green-800);
+  /* Tint behind accent icons and badges */
+  --accent-soft: var(--green-100);
+
+  /* The ground is a whisper of the logo green, not a stock cream: the
+     warmth comes from the gold ornaments and the photographs. */
+  --surface-app: #f2f5ef;
+  --surface-1: #ffffff;
+  --surface-2: #e9efe4;
+  --surface-sunken: #dfe7da;
+  /* The pointer's tone step on a white surface */
+  --surface-hover: #eef2ea;
+
+  /* Running text is set in the full ink; grey is for secondary notes. */
+  --text-strong: #172416;
+  --text-body: #26301f;
+  --text-muted: #565d50;
+  --text-subtle: #626a5c;
+
+  --action: var(--green-800);
+  --action-pressed: var(--green-900);
+  --on-action: #ffffff;
+
+  /* Lines belong to form fields only */
+  --hairline: rgba(29, 59, 27, 0.14);
+  --hairline-strong: rgba(23, 36, 22, 0.22);
+  --danger: #c81e1e;
+  --star: #b45309;
+  --card-border: transparent;
+
+  /* The closing field (footer): the logo green, inverted ink */
+  --field-inverse: var(--green-800);
+  --on-field-inverse: #ffffff;
+
+  /* Only for things that float above the page: menus, dialogs */
+  --shadow-float: 0 6px 16px rgba(17, 17, 16, 0.1), 0 22px 56px rgba(17, 17, 16, 0.16);
+  /* Keyboard focus is an outline, drawn outside the control */
+  --focus: rgba(63, 119, 58, 0.6);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
+  --t-press: 140ms;
+  --t-hover: 180ms;
+  --t-reveal: 800ms;
+
+  /* One pair of page margins everywhere, and one content width */
+  --gutter: clamp(16px, 2.6vw, 40px);
+  --shell: 80rem;
+}
+
+@theme inline {
+  --color-brand-50: var(--green-50);
+  --color-brand-100: var(--green-100);
+  --color-brand-200: var(--green-200);
+  --color-brand-300: var(--green-300);
+  --color-brand-400: var(--green-400);
+  --color-brand-500: var(--green-500);
+  --color-brand-600: var(--green-600);
+  --color-brand-700: var(--green-700);
+  --color-brand-800: var(--green-800);
+  --color-brand-900: var(--green-900);
+  --color-primary: var(--primary);
+  --color-accent-soft: var(--accent-soft);
+  --color-gold: var(--gold);
+  --color-gold-strong: var(--gold-strong);
+  --color-gold-soft: var(--gold-soft);
+  --color-ivory: var(--ivory);
+  --color-on-ivory: var(--on-ivory);
+  --color-mosaic: var(--mosaic);
+
+  --color-surface-app: var(--surface-app);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-surface-sunken: var(--surface-sunken);
+  --color-surface-hover: var(--surface-hover);
+
+  --color-content-strong: var(--text-strong);
+  --color-content-body: var(--text-body);
+  --color-content-muted: var(--text-muted);
+  --color-content-subtle: var(--text-subtle);
+
+  --color-action: var(--action);
+  --color-on-action: var(--on-action);
+  --color-hairline: var(--hairline);
+  --color-hairline-strong: var(--hairline-strong);
+  --color-danger: var(--danger);
+  --color-star: var(--star);
+  --color-field-inverse: var(--field-inverse);
+  --color-on-field-inverse: var(--on-field-inverse);
+
+  /* Square corners for pictures and panels; pills (rounded-pill / -full) for controls. */
+  --radius-xs: 0px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-pill: 999px;
+
+  /* Nothing at rest casts a shadow: the old elevation steps are flat now. */
+  --shadow-xs: 0 0 #0000;
+  --shadow-sm: 0 0 #0000;
+  --shadow-md: 0 0 #0000;
+  --shadow-float: var(--shadow-float);
+
+  /* Nothing meant to be read is set below 13px; running text is 16px. */
+  --text-xs: 0.8125rem;
+  --text-xs--line-height: 1.4;
+  --text-sm: 1rem;
+  --text-sm--line-height: 1.5;
+
+  --ease-out: var(--ease-out);
+
+  --font-sans: var(--font-open-sans), var(--font-cairo), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-stolzl), var(--font-cairo), ui-sans-serif, system-ui, sans-serif;
+
+  --animate-fade-up: fade-up 380ms var(--ease-out) both;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+  }
+}
+
+/* Arabic text leads with Cairo */
+:lang(ar) {
+  font-family: var(--font-cairo), var(--font-open-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Arabic script has tall ascenders and descenders and no capitals: the Latin
+   display leading (0.9) and negative tracking make its lines collide. */
+:lang(ar) :is(.display, .heading, .title-3xl, .title-2xl, .title-xl, .title) {
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+
+/* Headings in Stolzl (Cairo in Arabic, through :lang above). */
+:where(h1, h2, h3, .display, .heading, .title-3xl, .title-2xl, .title-xl, .title, .title-2):not(:lang(ar)) {
+  font-family: var(--font-display);
+}
+
+::selection {
+  background: var(--gold-soft);
+  color: var(--text-strong);
+}
+
+body {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 1ms !important;
+    transition-duration: 1ms !important;
+  }
+}
+
+/* ---------- Type. Sentence case; tracking tightens as size grows. ---------- */
+
+/* Page titles on catalogue pages */
+@utility display {
+  font-size: clamp(2.25rem, 4.6vw, 3.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  font-weight: 700;
+  color: var(--text-strong);
+  text-wrap: balance;
+}
+
+/* Section headings: modest on purpose, against the name */
+@utility heading {
+  font-size: clamp(1.625rem, 2.6vw, 2rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  color: var(--text-strong);
+  text-wrap: balance;
+}
+
+/* Dead ends (the 404): the sentence is the one big thing. */
+@utility title-3xl {
+  font-size: clamp(2.25rem, 4.6vw, 3.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  font-weight: 700;
+  color: var(--text-strong);
+}
+
+@utility title-2xl {
+  font-size: clamp(1.875rem, 3.4vw, 2.625rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  color: var(--text-strong);
+  text-wrap: balance;
+}
+@utility title-xl {
+  font-size: 1.5rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  color: var(--text-strong);
+}
+@utility title {
+  font-size: 1.25rem;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  font-weight: 700;
+  color: var(--text-strong);
+}
+@utility title-2 {
+  font-size: 1.125rem;
+  line-height: 1.3;
+  font-weight: 600;
+  color: var(--text-strong);
+}
+@utility title-sm {
+  font-size: 1rem;
+  line-height: 1.35;
+  font-weight: 600;
+  color: var(--text-strong);
+}
+@utility type-caption {
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+@utility type-meta {
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+
+/* Isolates mixed-direction runs (a Latin name in Arabic flow, a figure plus currency code). */
+@utility auto-dir {
+  unicode-bidi: plaintext;
+  text-align: start;
+}
+
+/* Long texts written in the administration. */
+@utility prose-block {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--text-body);
+  max-width: 68ch;
+  & p + p,
+  & ul,
+  & ol {
+    margin-top: 1.75rem;
+  }
+  & ul {
+    list-style: disc;
+    padding-inline-start: 1.25rem;
+  }
+  & ol {
+    list-style: decimal;
+    padding-inline-start: 1.25rem;
+  }
+  & a {
+    text-decoration: underline;
+  }
+  & strong {
+    font-weight: 600;
+    color: var(--text-strong);
+  }
+}
+
+@utility hidden-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Keyboard focus, for controls that style it themselves */
+@utility ring-focus {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* Every focusable thing shows where the keyboard is. */
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+@utility gutter {
+  padding-inline: var(--gutter);
+}
+
+/* The one content column: centred, never wider than 1280px. */
+@utility shell {
+  width: 100%;
+  max-width: calc(var(--shell) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* ---------- Surfaces ---------- */
+
+/* A white field on the tinted ground: the tone step is the whole elevation system. */
+@utility card {
+  background: var(--surface-1);
+  transition: background-color var(--t-hover) ease;
+}
+
+@utility card-interactive {
+  cursor: pointer;
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background: var(--surface-hover);
+    }
+  }
+  &:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+  }
+}
+
+/* ---------- Controls ---------- */
+
+@utility btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  height: 3rem;
+  padding-inline: 1.375rem;
+  border-radius: var(--radius-pill);
+  font-size: 1rem;
+  font-weight: 600;
+  user-select: none;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition:
+    transform var(--t-press) var(--ease-out),
+    background-color var(--t-hover) ease,
+    color var(--t-hover) ease;
+  &:active:not(:disabled) {
+    transform: scale(0.97);
+  }
+  &:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+  }
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+  }
+}
+
+/* The one action that commits: a flat pill in the logo green. */
+@utility btn-primary {
+  background: var(--action);
+  color: var(--on-action);
+  @media (hover: hover) and (pointer: fine) {
+    &:hover:not(:disabled) {
+      background: var(--action-pressed);
+    }
+  }
+  &:active:not(:disabled) {
+    background: var(--action-pressed);
+  }
+}
+
+/* The quiet action: a tone step, no outline */
+@utility btn-outline {
+  background: var(--surface-1);
+  color: var(--text-strong);
+  @media (hover: hover) and (pointer: fine) {
+    &:hover:not(:disabled) {
+      background: var(--surface-hover);
+    }
+  }
+}
+
+@utility btn-xl {
+  height: 3.5rem;
+  padding-inline: 1.875rem;
+  font-size: 1.125rem;
+}
+
+@utility chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 2.5rem;
+  padding-inline: 1rem;
+  border-radius: var(--radius-pill);
+  font-size: 1rem;
+  font-weight: 600;
+  white-space: nowrap;
+  background: var(--surface-1);
+  color: var(--text-strong);
+  transition:
+    background-color var(--t-hover) ease,
+    transform var(--t-press) var(--ease-out);
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background: var(--surface-hover);
+    }
+  }
+  &:active {
+    transform: scale(0.97);
+  }
+  &:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+  }
+}
+
+@utility chip-active {
+  background: var(--text-strong);
+  color: var(--surface-app);
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background: var(--text-strong);
+    }
+  }
+}
+
+/* Form fields keep their outline: it is what makes them read as fields. */
+@utility input {
+  width: 100%;
+  height: 3.5rem;
+  padding-inline: 1rem;
+  background: var(--surface-1);
+  border: 1px solid var(--hairline-strong); /* taste-skill-ignore: form field */
+  color: var(--text-strong);
+  /* 16px minimum: anything smaller makes iOS Safari zoom on focus */
+  font-size: 16px;
+  outline: none;
+  transition:
+    border-color var(--t-hover) ease,
+    box-shadow var(--t-hover) ease;
+  &::placeholder {
+    color: var(--text-subtle);
+  }
+  &:focus,
+  &:focus-within {
+    border-color: var(--primary);
+    outline: 3px solid var(--focus);
+    outline-offset: 1px;
+  }
+}
+
+@utility label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* ---------- Motion ---------- */
+/* Hidden states apply only under html.js (set in <head>). If the page's script
+   never starts (no .reveals-ready), a CSS safety net shows everything after 3s. */
+
+@keyframes rise {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes reveal-fallback {
+  to {
+    opacity: 1;
+    transform: none;
+    clip-path: inset(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* First screen: the parts arrive in reading order, once. */
+  .js [data-rise] {
+    opacity: 0;
+    transform: translateY(22px);
+    animation: rise var(--t-reveal) var(--ease-out) forwards;
+    animation-delay: calc(var(--i, 0) * 90ms + 100ms);
+  }
+
+  /* Sections: each part rises as it enters (see components/reveals.tsx). */
+  .js [data-reveal]:not(.is-in) {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  .js:not(.reveals-ready) [data-reveal]:not(.is-in),
+  .js:not(.reveals-ready) [data-shutter]:not(.is-in) img {
+    animation: reveal-fallback 1ms 3s forwards;
+  }
+  .js [data-reveal] {
+    transition:
+      opacity 700ms var(--ease-out),
+      transform 900ms var(--ease-out);
+    transition-delay: calc(var(--i, 0) * 75ms);
+  }
+
+  /* Pictures open from the bottom edge while settling inside their frame. The
+     clip sits on the picture, not the frame: an observer never sees a target
+     that is clipped to nothing. */
+  .js [data-shutter] img,
+  .js [data-shutter] video {
+    transition:
+      clip-path 1100ms var(--ease-in-out),
+      transform 1500ms var(--ease-soft);
+    transition-delay: calc(var(--i, 0) * 75ms);
+  }
+  .js [data-shutter]:not(.is-in) img,
+  .js [data-shutter]:not(.is-in) video {
+    clip-path: inset(100% 0 0 0);
+    transform: scale(1.12);
+  }
+}
+
+
+/* ---------- Al-Andalus ---------- */
+
+/* A band of the charter's zellige, tinted gold, between two fields. */
+@utility zellige-band {
+  height: 28px;
+  background-color: var(--gold-soft);
+  background-image: url('/brand/bg_mosaic.svg');
+  background-size: 120px auto;
+  background-position: center;
+  opacity: 1;
+  border-block: 1px solid color-mix(in srgb, var(--gold) 35%, transparent);
+}
+
+/* ---------- Brand ---------- */
+
+/* The geometric pattern from the charter, as a quiet ground. */
+@utility bg-mosaic {
+  background-image: url('/brand/bg_mosaic.svg');
+  background-size: 22rem auto;
+  background-repeat: repeat;
+}

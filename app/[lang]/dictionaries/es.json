@@ -1,0 +1,261 @@
+{
+  "site": {
+    "name": "Angham Al Andalous",
+    "tagline": "Sidi Bel Abbès — Patrimonio musical andalusí de la escuela de Tremecén",
+    "description": "Asociación cultural y científica dedicada a la valorización, la preservación y la transmisión del patrimonio musical andalusí de la escuela de Tremecén.",
+    "motto": "Tras los pasos de los maestros"
+  },
+  "nav": {
+    "home": "Inicio",
+    "patrimoine": "Patrimonio musical",
+    "bibliotheque": "Biblioteca y archivos",
+    "recherche": "Investigación",
+    "evenements": "Eventos",
+    "publications": "Publicaciones y noticias",
+    "association": "La asociación",
+    "contact": "Contacto y participación"
+  },
+  "common": {
+    "comingSoon": "Contenido en preparación.",
+    "explore": "Descubrir",
+    "language": "Idioma",
+    "menu": "Menú",
+    "rights": "Todos los derechos reservados.",
+    "readMore": "Leer más",
+    "back": "Volver",
+    "empty": "Todavía no hay nada aquí.",
+    "all": "Todo",
+    "loading": "Cargando…",
+    "preferences": "Preferencias",
+    "sections": "Secciones",
+    "notFound": "Esta página no existe.",
+    "notFoundHint": "Puede que el enlace sea antiguo o que la página se haya trasladado. Todas las secciones del sitio siguen a su alcance.",
+    "goHome": "Volver al inicio",
+    "close": "Cerrar",
+    "related": "Artículos relacionados",
+    "photoCredits": "Créditos fotográficos",
+    "photo": "Foto"
+  },
+  "home": {
+    "heroTitle": "Preservar y transmitir la música andalusí de Tremecén",
+    "heroText": "Angham Al Andalous une cultura, documentación e investigación para mantener vivo un patrimonio musical centenario.",
+    "ctaPrimary": "Descubrir el patrimonio",
+    "ctaSecondary": "Explorar la biblioteca",
+    "about": [
+      {
+        "title": "Misión",
+        "text": "Valorizar, preservar y transmitir el patrimonio musical andalusí de la escuela de Tremecén."
+      },
+      {
+        "title": "Visión",
+        "text": "Convertirse en una plataforma de referencia, cultural y científica, para este patrimonio."
+      },
+      {
+        "title": "Objetivos",
+        "text": "Documentar las fuentes, animar la vida cultural y apoyar la investigación."
+      }
+    ],
+    "upcoming": "Próximos eventos",
+    "latest": "Últimas publicaciones y noticias",
+    "resources": "Recursos documentales",
+    "quickAccess": "Acceso rápido",
+    "featured": "Para leer",
+    "pillars": "Lo que nos guía",
+    "explore": "Explorar el patrimonio",
+    "secretary": {
+      "title": "Unas palabras del secretario general",
+      "name": "Rachid SOULAIMAN",
+      "role": "Secretario general de Angham Al Andalous",
+      "paragraphs": [
+        "Angham Al Andalous nació de una convicción sencilla: la música andalusí de la escuela de Tremecén no es un recuerdo que se guarda tras un cristal, sino una lengua viva que se transmite de voz en voz. En Sidi Bel Abbès queremos ofrecer a este patrimonio un lugar donde se toque, se escuche y se aprenda.",
+        "Nuestra ambición es doble: mantener viva la nuba y el hawzi con veladas musicales, encuentros e intercambios con las escuelas de Argel y Constantina; y documentar con rigor las fuentes, las obras y sus variantes, para que las generaciones futuras dispongan de un conocimiento fiable.",
+        "Caminamos tras los pasos de los maestros. Tanto si es usted músico, investigador, aficionado o guardián de archivos familiares, esta casa es también la suya: le invito a unirse a nosotros."
+      ]
+    },
+    "heroImageAlt": "Un conjunto musical argelino en el Congreso de Música Árabe de El Cairo, en 1932"
+  },
+  "sections": {
+    "patrimoine": {
+      "title": "Patrimonio musical",
+      "intro": "La historia, las formas y las figuras de la música andalusí de la escuela de Tremecén.",
+      "items": [
+        "Historia de la música andalusí",
+        "La escuela de Tremecén y sus particularidades",
+        "Repertorios y formas musicales",
+        "Instrumentos tradicionales",
+        "Maestros, artistas y figuras históricas",
+        "Transmisión y preservación del patrimonio"
+      ],
+      "texts": [
+        "De Ziryab en Córdoba a las familias andalusíes acogidas en Tremecén, la historia de esta música mezcla hechos establecidos y relatos transmitidos. Nuestros artículos distinguen unos de otros.",
+        "Tremecén dio su nombre a una de las tres grandes escuelas argelinas, el gharnati, con sus propias familias de modos y su propio repertorio.",
+        "La nuba, gran suite en cinco movimientos, y el hawzi, poesía cantada en árabe dialectal, son los dos pilares del repertorio de Tremecén.",
+        "Rebab, kuitra, kamandja, tar y derbuka: un conjunto de cámara en el que cada instrumento adorna la misma melodía.",
+        "De Cheikh Larbi Bensari a Abdelkrim Dali y Cheikha Tetma, los maestros del siglo XX llevaron este arte mucho más allá de Tremecén.",
+        "Transmitida durante mucho tiempo de maestro a alumno, esta música llegó a la radio, al disco y a las asociaciones, de Tremecén a Sidi Bel Abbès y más allá."
+      ]
+    },
+    "bibliotheque": {
+      "title": "Biblioteca y archivos",
+      "intro": "Libros, estudios, manuscritos, grabaciones y documentos digitalizados.",
+      "items": [
+        "Libros y referencias bibliográficas",
+        "Artículos y estudios científicos",
+        "Manuscritos y documentos históricos",
+        "Archivos de audio y vídeo",
+        "Fotografías y documentos digitalizados",
+        "Catálogo de obras musicales",
+        "Búsqueda y filtrado de recursos"
+      ]
+    },
+    "recherche": {
+      "title": "Investigación",
+      "intro": "El enfoque científico de la asociación y los resultados de su trabajo.",
+      "items": [
+        "Nuestro enfoque científico",
+        "Líneas y proyectos de investigación",
+        "Documentación y estudio de las fuentes musicales",
+        "Proyecto de transcripción musical",
+        "Estudios comparativos y variantes de las obras",
+        "Metodología de investigación y documentación",
+        "Publicaciones científicas y resultados"
+      ],
+      "texts": [
+        "Nuestro enfoque une la práctica musical y el estudio de las fuentes: cada información que publicamos está vinculada a sus referencias, y los puntos debatidos se presentan como tales.",
+        "Tres líneas guían nuestro trabajo: la documentación de las fuentes musicales, la transcripción de las obras y el estudio comparado de sus versiones.",
+        "Catalogamos libros, artículos, manuscritos y grabaciones, y los ponemos a disposición en la biblioteca del sitio, con sus condiciones de difusión.",
+        "Con el tiempo, queremos ofrecer transcripciones musicales de las obras, publicadas solo una vez verificadas y validadas.",
+        "Una misma pieza circula entre Tremecén, Argel y Constantina con formas diferentes: comparar estas variantes, títulos y poemas incluidos, ilumina su historia.",
+        "Cada obra tendrá una ficha que reunirá las variantes de los títulos, las fuentes bibliográficas, las interpretaciones registradas y las grabaciones autorizadas, mediante un proceso de contribución y validación científica.",
+        "Los resultados de nuestro trabajo se publican en Publicaciones y noticias, empezando por nuestros artículos de fondo sobre la escuela de Tremecén."
+      ]
+    },
+    "evenements": {
+      "title": "Eventos",
+      "intro": "Conferencias, veladas musicales, festividades e intercambios culturales.",
+      "items": [
+        "Agenda de próximos eventos",
+        "Conferencias y encuentros científicos",
+        "Veladas musicales",
+        "Celebraciones religiosas y festividades culturales",
+        "Intercambios con las escuelas de Argel y Constantina",
+        "Archivo de eventos pasados",
+        "Galerías fotográficas y grabaciones"
+      ]
+    },
+    "publications": {
+      "title": "Publicaciones y noticias",
+      "intro": "Artículos, entrevistas, crónicas y comunicados.",
+      "items": [
+        "Artículos de fondo sobre la música andalusí",
+        "Noticias de la asociación",
+        "Entrevistas con músicos, investigadores y especialistas",
+        "Crónicas de conferencias",
+        "Anuncios y comunicados oficiales",
+        "Contribuciones culturales y científicas"
+      ]
+    },
+    "association": {
+      "title": "La asociación",
+      "intro": "Quiénes somos, qué nos mueve y cómo trabajamos.",
+      "items": [
+        "Presentación e historia",
+        "Misión, visión y valores",
+        "Objetivos culturales y científicos",
+        "Organización y miembros",
+        "Socios culturales y científicos",
+        "Informes de actividad y proyectos realizados"
+      ],
+      "texts": [
+        "Angham Al Andalous es una asociación cultural y científica de Sidi Bel Abbès, fiel a la escuela de Tremecén. Su lema, «Tras los pasos de los maestros», expresa su apego a la transmisión.",
+        "Nuestra misión: valorizar, preservar y transmitir el patrimonio musical andalusí de la escuela de Tremecén. Nuestra visión: convertirnos en una plataforma de referencia, cultural y científica, para este patrimonio.",
+        "Animar la vida cultural con veladas musicales, conferencias e intercambios con las escuelas de Argel y Constantina; documentar las fuentes y apoyar la investigación.",
+        null,
+        null,
+        null
+      ]
+    },
+    "contact": {
+      "title": "Contacto y participación",
+      "intro": "Escríbanos, contribuya, colabore o apoye a la asociación.",
+      "items": [
+        "Datos de contacto",
+        "Formulario de contacto",
+        "Redes sociales",
+        "Proponer documentos, archivos o testimonios",
+        "Colaboración y asociación científica",
+        "Unirse a la asociación o apoyarla"
+      ]
+    }
+  },
+  "events": {
+    "upcoming": "Próximos",
+    "past": "Eventos pasados",
+    "location": "Lugar",
+    "categories": {
+      "conference": "Conferencia",
+      "soiree": "Velada musical",
+      "celebration": "Celebración",
+      "echange": "Intercambio cultural",
+      "autre": "Otro"
+    }
+  },
+  "publications": {
+    "by": "Por",
+    "categories": {
+      "article": "Artículo de fondo",
+      "actualite": "Noticia",
+      "entretien": "Entrevista",
+      "compte-rendu": "Crónica",
+      "communique": "Comunicado",
+      "contribution": "Contribución"
+    }
+  },
+  "library": {
+    "search": "Buscar en la biblioteca",
+    "filter": "Tipo de recurso",
+    "open": "Consultar",
+    "rights": "Derechos",
+    "types": {
+      "livre": "Libros",
+      "article": "Artículos y estudios",
+      "manuscrit": "Manuscritos",
+      "audio": "Audio",
+      "video": "Vídeo",
+      "photo": "Fotografías",
+      "partition": "Partituras"
+    }
+  },
+  "contact": {
+    "formTitle": "Escríbanos",
+    "name": "Nombre completo",
+    "email": "Correo electrónico",
+    "subject": "Asunto",
+    "message": "Mensaje",
+    "submit": "Enviar",
+    "sending": "Enviando…",
+    "success": "¡Gracias! Su mensaje ha sido enviado. Le responderemos en breve.",
+    "subjects": {
+      "general": "Consulta general",
+      "contribution": "Proponer documentos, archivos o testimonios",
+      "partenariat": "Colaboración o asociación científica",
+      "adhesion": "Unirse a la asociación o apoyarla"
+    },
+    "errors": {
+      "required": "Este campo es obligatorio.",
+      "email": "Correo electrónico no válido.",
+      "tooLong": "El texto es demasiado largo.",
+      "generic": "Se ha producido un error. Inténtelo de nuevo."
+    },
+    "preview": "El formulario de contacto estará activo cuando el sitio se publique oficialmente. Esta versión es una vista previa."
+  },
+  "navShort": {
+    "patrimoine": "Patrimonio",
+    "bibliotheque": "Biblioteca",
+    "recherche": "Investigación",
+    "evenements": "Eventos",
+    "publications": "Publicaciones",
+    "association": "La asociación",
+    "contact": "Contacto"
+  }
+}
